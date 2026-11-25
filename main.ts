@@ -1,14 +1,16 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 
 const ENTRY: string = [
-  "When the recruiter asks what you want, don't blurt out the first number in your head.",
-  "You said $52,000, and it took four years and two jobs to climb back to what you were already worth.",
+  "Don't buy the 'one size fits all' suit for your sister's wedding.",
+  "It fit no one, the photos are forever, and your sister still introduces you as 'the one in the tent.'",
 ].join("\n");
 
-// Gate: 1-280 characters, exactly 2 lines.
-const chars: number = [...ENTRY].length;
+// Gate: 1-280 characters, exactly 2 lines. The gate applies to the file
+// that is written, so count the trailing newline too.
+const FILE_TEXT: string = ENTRY + "\n";
+const chars: number = [...FILE_TEXT].length;
 if (chars < 1 || chars > 280) {
-  throw new Error(`entry is ${chars} characters, outside gate 1-280`);
+  throw new Error(`entry file is ${chars} characters, outside gate 1-280`);
 }
 const lines: string[] = ENTRY.split("\n");
 if (lines.length !== 2) {
